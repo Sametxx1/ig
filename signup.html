@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Kayıt</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            border: 1px solid #333;
+        }
+        .logo {
+            font-family: 'Lobster', cursive;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .fb-login {
+            background-color: #1877f2;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        .fb-login:hover {
+            background-color: #145db2;
+        }
+        .or {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .or span {
+            margin: 0 10px;
+            color: #888;
+        }
+        .or hr {
+            flex: 1;
+            border: none;
+            border-top: 1px solid #888;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+        .signup-btn {
+            background-color: #0095f6;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .signup-btn:hover {
+            background-color: #007bb5;
+        }
+        .login-link {
+            margin-top: 15px;
+        }
+        .login-link a {
+            color: #0095f6;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        .app-links {
+            margin-top: 20px;
+        }
+        .app-links img {
+            width: 120px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Instagram</div>
+        <div class="subtitle">Arkadaşlarının fotoğraflar ve videolarını görmek için kaydol.</div>
+        <button class="fb-login" onclick="facebookLogin()">Facebook ile Giriş Yap</button>
+        <div class="or">
+            <hr><span>YA DA</span><hr>
+        </div>
+        <form id="signupForm" onsubmit="handleSignup(event)">
+            <div class="form-group">
+                <input type="text" id="phoneOrEmail" placeholder="Cep Telefonu Numarası veya E-posta" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Şifre" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="fullName" placeholder="Adı Soyadı" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Kullanıcı adı" required>
+            </div>
+            <p style="font-size: 12px; color: #888;">
+                Hizmetimizi kullanan kişiler senin iletişim bilgilerini Instagram'a yüklemiş olabilir. Daha Fazla Bilgi Al<br>
+                Kaydolarak, Gizlilik İlkemizi ve Çerezler İlkemizi kabul etmiş olursun.
+            </p>
+            <button type="submit" class="signup-btn">KAYDOL</button>
+        </form>
+        <div class="login-link">
+            Hesabın var mı? <a href="#" onclick="goToLogin()">Giriş yap</a>
+        </div>
+        <div class="app-links">
+            <p>Uygulamayı İndir.</p>
+            <img src="WFzmKhSYqya.png" alt="App Store" onclick="downloadApp('App Store')">
+            <img src="XUCupIzGmzB.png" alt="Google Play" onclick="downloadApp('Google Play')">
+        </div>
+    </div>
+
+    <script>
+        // Facebook ile Giriş Yap butonu işlevselliği
+        function facebookLogin() {
+            alert("Facebook ile giriş yapılıyor...");
+            window.location.href = "https://www.facebook.com/login";
+        }
+
+        // KAYDOL butonu işlevselliği
+        function handleSignup(event) {
+            event.preventDefault();
+
+            const phoneOrEmail = document.getElementById("phoneOrEmail").value;
+            const password = document.getElementById("password").value;
+            const fullName = document.getElementById("fullName").value;
+            const username = document.getElementById("username").value;
+
+            if (!phoneOrEmail || !password || !fullName || !username) {
+                alert("Lütfen tüm alanları doldurun!");
+                return;
+            }
+
+            if (password.length < 6) {
+                alert("Şifre en az 6 karakter olmalı!");
+                return;
+            }
+
+            alert(`Kayıt başarılı!\nKullanıcı adı: ${username}\nAd Soyad: ${fullName}`);
+            document.getElementById("signupForm").reset();
+        }
+
+        // Giriş yap bağlantısı işlevselliği
+        function goToLogin() {
+            window.location.href = "index.html"; // index.html'e yönlendir
+        }
+
+        // Uygulama indirme işlevselliği
+        function downloadApp(store) {
+            alert(`${store} üzerinden uygulama indiriliyor...`);
+            if (store === "App Store") {
+                window.location.href = "https://www.apple.com/app-store/";
+            } else if (store === "Google Play") {
+                window.location.href = "https://play.google.com/store";
+            }
+        }
+    </script>
+</body>
+</html>

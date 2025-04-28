@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Giriş</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        .logo {
+            width: 100px;
+            margin: 0 auto 30px;
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #1c1e21;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+        }
+        .login-btn {
+            background-color: #1877f2;
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: background-color 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #166fe5;
+        }
+        .forgot-password {
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 30px;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        .meta-logo {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .meta-logo img {
+            width: 60px; /* Meta logosu için uygun bir boyut */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="UbJC5lwxeBU.png" alt="Facebook Logo" class="logo">
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <input type="text" id="phoneOrEmail" placeholder="Cep telefonu numarası veya e-posta" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Şifre" required>
+            </div>
+            <button type="submit" class="login-btn">Giriş yap</button>
+        </form>
+        <a href="#" class="forgot-password" onclick="forgotPassword()">Şifreni mi unuttun?</a>
+        <div class="meta-logo">
+            <img src="Y1oMjgd9pE3.png" alt="Meta Logo">
+        </div>
+    </div>
+
+    <script>
+        // Giriş Yap butonu işlevselliği
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const phoneOrEmail = document.getElementById("phoneOrEmail").value;
+            const password = document.getElementById("password").value;
+
+            if (!phoneOrEmail || !password) {
+                alert("Lütfen tüm alanları doldurun!");
+                return;
+            }
+
+            if (password.length < 6) {
+                alert("Şifre en az 6 karakter olmalı!");
+                return;
+            }
+
+            alert(`Giriş başarılı!\nKullanıcı: ${phoneOrEmail}`);
+            document.getElementById("loginForm").reset();
+        }
+
+        // Şifreni mi unuttun? bağlantısı işlevselliği
+        function forgotPassword() {
+            window.location.href = "https://www.facebook.com/recover/initiate/";
+        }
+    </script>
+</body>
+</html>
